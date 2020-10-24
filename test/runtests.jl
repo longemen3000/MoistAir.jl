@@ -1,6 +1,6 @@
-using MoistAir
+using MoistAir, Unitful
 using Test
 
-@testset "MoistAir.jl" begin
-    # Write your tests here.
-end
+include("test_hyland83.jl")
+include("test_hyland83a.jl")
+
