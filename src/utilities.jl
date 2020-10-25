@@ -47,69 +47,11 @@ function calcz(b0, c0)
     #transformation:
     #z3 = z2 + b₀z + c0
     #z3-z2- b₀z- c0
-    poly =(-c0,-b0,-1.0,1.0)
-    res =  cardan(poly)
-    real_res = cardan_reals(res)
-    return maximum(real_res)
+    _c0,_b0,_1 = promote(c0,b0,1.0)
+    poly =(-_c0,-_b0,-_1,_1)
+    f0(x) = evalpoly(x,poly)
+    xs = _1 #supposing ideal gas
+    return Roots.secant_method(f0,xs)
+    
 end
 
-
-function cardan(poly::NTuple{4,T}) where {T<:AbstractFloat}
-    # Cubic equation solver for complex polynomial (degree=3)
-    # http://en.wikipedia.org/wiki/Cubic_function   Lagrange's method
-    third = T(1//3)
-    _1 = T(1.0)
-    a1  =  complex(_1/poly[4])
-    E1  = -complex(poly[3])*a1
-    E2  =  complex(poly[2])*a1
-    E3  = -complex(poly[1])*a1
-    s0  =  E1
-    E12 =  E1*E1
-    A   =  2*E1*E12 - 9*E1*E2 + 27*E3 # = s1^3 + s2^3
-    B   =  E12 - 3*E2                 # = s1 s2
-    # quadratic equation: z^2 - Az + B^3=0  where roots are equal to s1^3 and s2^3
-    Δ = sqrt(A*A - 4*B*B*B)
-    if real(conj(A)*Δ)>=0 # scalar product to decide the sign yielding bigger magnitude
-        s1 = exp(log(0.5 * (A + Δ)) * third)
-    else
-        s1 = exp(log(0.5 * (A - Δ)) * third)
-    end
-    if s1 == 0
-        s2 = s1
-    else
-        s2 = B / s1
-    end
-    zeta1 = complex(-0.5, sqrt(T(3.0))*0.5)
-    zeta2 = conj(zeta1)
-    return third*(s0 + s1 + s2), third*(s0 + s1*zeta2 + s2*zeta1), third*(s0 + s1*zeta1 + s2*zeta2)
-end
-
-
-
-function cardan_reals(res::NTuple{3,Complex{T}}) where T
-    nan = T(NaN)
-    a1, a2, a3 = res
-    isreal1 = abs(imag(a1) < 16*eps(imag(a1)))
-    isreal2 = abs(imag(a2) < 16*eps(imag(a2)))
-    isreal3 = abs(imag(a3) < 16*eps(imag(a3)))
-    r1 = real(a1)
-    r2 = real(a2)
-    r3 = real(a3)
-    if isreal1 & isreal2 & isreal3
-        return (r1,r2,r3)
-    elseif !isreal1 & !isreal2
-        return (r3,r3,r3)
-    elseif  !isreal3 & !isreal2
-        return (r1,r1,r1)
-    elseif  !isreal3 & !isreal1
-        return (r2,r2,r2)
-    elseif !isreal1
-        return (r3,r2,r2)
-    elseif !isreal2
-        return (r1,r3,r3)
-    elseif !isreal3
-        return (r1,r3,r3)
-    else
-        return (nan,nan,nan)
-    end
-end
