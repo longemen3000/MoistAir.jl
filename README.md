@@ -2,6 +2,7 @@
 
 [![Build Status](https://github.com/longemen3000/MoistAir.jl/workflows/CI/badge.svg)](https://github.com/longemen3000/MoistAir.jl/actions)
 [![Build Status](https://travis-ci.com/longemen3000/MoistAir.jl.svg?branch=master)](https://travis-ci.com/longemen3000/MoistAir.jl)
+[![Codecov](https://codecov.io/gh/longemen3000/MoistAir.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/longemen3000/MoistAir.jl)
 
 This package provides a model, `MoistAirModel` to compute thermodynamic properties of moist air, using the [ThermoState](https://github.com/longemen3000/ThermoState.jl) interface. The model uses real gas correlations as recommended by ASHRAE (see reference [5]). 
 
