@@ -489,7 +489,6 @@ end
 function mol_fraction(model::ASHRAEMoistAir,st::ThermodynamicState)
     xv = hum_molfrac(model,st)
     return SVector(1-xv,xv)
-     1
 end
 
 function mass_fraction(model::ASHRAEMoistAir,st::ThermodynamicState)
