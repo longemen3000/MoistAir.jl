@@ -49,7 +49,7 @@ The package also provides its own functions, with ThermoState syntax, specific f
 
 - `hum_ratio` : Humidity ratio (kg of vapor / kg of dry air)
 
-- `hum_dewpoint`  temperature to which moist air must be cooled to become saturated,always lower than the specified temperature
+- `hum_dewpoint`  temperature to which moist air must be cooled to become saturated,always lower than the specified temperature.
 ## Humidity Spec
 
 As mentioned before, the MoistAirModel accepts thermodynamic states of the form pressure-temperature-humidity spec. you can use the same function names as keywords in the `ThermoState.state` function.
