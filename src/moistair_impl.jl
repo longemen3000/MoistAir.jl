@@ -283,13 +283,13 @@ end
 function rel_hum_impl(mt::HumPT, model::ASHRAEMoistAir,p,t,hum)
     dryair_check(p,t)   
     xv = hum_molfrac_impl(mt,model,p,t,hum)
-    xv * P / (efactor(t, p) * Pws(t))
+    xv * p / (efactor(t, p) * Pws(t))
 end
-
 
 function hum_wetbulb_impl(mt::WebBulbPT, model::ASHRAEMoistAir,p,t,hum)
     return hum
 end
+
 function hum_wetbulb_impl(mt::HumPT, model::ASHRAEMoistAir,p,t,hum)
     dryair_check(p,t)   
     xv = hum_molfrac_impl(mt,model,p,t,hum)

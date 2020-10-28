@@ -41,3 +41,5 @@ function calcwetbulb(Tk, P, xv)
     f0(_B) = aux_WB(w, Tk,_B, P)
     return Roots.find_zero(f0,B)     
 end
+
+humrat(xv) = xv / (1-xv) * (Mv/Ma)
