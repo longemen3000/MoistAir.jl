@@ -8,22 +8,22 @@ This package provides a model, `MoistAirModel` to compute thermodynamic properti
 
 This package also provides the underlying models used for moist air, namely, dry air (`ASHRAEDryAir`) and water vapor (`ASHRAEWaterVapor`). those models have the same interface as the moist air model.
 
-this is a fork of [Psychro.jl](https://github.com/pjabardo/Psychro.jl/) working with julia 1.5+.
+This is a fork of [Psychro.jl](https://github.com/pjabardo/Psychro.jl/) working with julia 1.5+.
 
-## instalation
+## Instalation
 
 ```julia-repl
 julia> ]
-(v1.5) pkg> add https://github.com/longemen3000/MoistAir.jl
+(v1.5) pkg> add MoistAir
 ```
 ## User interface - Thermodynamic properties of moist air, dry air and saturated water vapor.
 
-The models defined in this package accept the following thermodynamic states:
+The models defined in this package accept the following `ThermoState` thermodynamic states:
 - `ASHRAEDryAir`: pressure,temperature
 - `ASHRAEWaterVapor`: pressure,temperature
 - `MoistAirModel` : 
-    - pressure, temperature, amounts (any of mol_fraction,mass_fraction,mol_number,mass_number)
-    - pressure,temperature, humidity spec
+    - pressure, temperature, amounts (any of `mol_fraction`,`mass_fraction`,`mol_number`,`mass_number`)
+    - pressure,temperature, humidity spec*
 
 
 The models defined in this package support the following `ThermoState` functions:
