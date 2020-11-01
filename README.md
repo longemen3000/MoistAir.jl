@@ -34,7 +34,7 @@ The models defined in this package support the following `ThermoState` functions
 - `mol_enthalpy`, `mass_enthalpy`
 - `compressibility_factor`
 
-The package also provides its own functions, with ThermoState syntax, specific for moist air:
+The package also provides its own functions, with `ThermoState` syntax, specific for moist air:
 
 - Dry properties: properties per 1 kg of dry air:
     - `dry_volume`,`dry_enthalpy`,`dry_entropy`
