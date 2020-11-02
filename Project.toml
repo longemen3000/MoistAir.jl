@@ -1,7 +1,7 @@
 name = "MoistAir"
 uuid = "6964bd62-30e7-41c5-9f4a-5b4eb733a2a8"
 authors = ["longemen3000 <longemen3000@gmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Roots = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
